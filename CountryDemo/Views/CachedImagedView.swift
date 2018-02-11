@@ -47,7 +47,8 @@ class CachedImagedView: UIImageView {
                             completion?()
                         }
                     }
-                } else {
+                }
+                else {
                     completion?()
                 }
             }

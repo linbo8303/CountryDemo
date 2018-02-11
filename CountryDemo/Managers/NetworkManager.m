@@ -38,14 +38,16 @@
                 NSString *jsonString = [[NSString alloc] initWithData:data encoding:NSISOLatin1StringEncoding];
                 NSData *jsonData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
                 jsonDict = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:nil];
-            } else {
+            }
+            else {
                 jsonDict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
             }
             
             if (success) {
                 success(jsonDict);
             }
-        } else {
+        }
+        else {
             if (fail) {
                 fail(connectionError);
             }
