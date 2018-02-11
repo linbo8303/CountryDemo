@@ -32,6 +32,9 @@ class CountryTableViewController: UITableViewController {
     let urlString = "https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json"
 
     @objc private func refresh() {
+        if refreshControl != nil {
+            refreshControl?.beginRefreshing()
+        }
         NetworkManager.connectionRequest(with: .GET, urlString: urlString, parameters: nil, success: { (anyJsonDict) in
             if let jsonDict = anyJsonDict as? [AnyHashable: Any],
                 let country = try? MTLJSONAdapter.model(of: MTLCountry.self, fromJSONDictionary: jsonDict) as? MTLCountry {
@@ -40,8 +43,10 @@ class CountryTableViewController: UITableViewController {
                     $0.title != nil || $0.descr != nil || $0.imageHref != nil
                 }
             }
+            self.refreshControl?.endRefreshing()
         }) { (error) in
             print(error.debugDescription)
+            self.refreshControl?.endRefreshing()
         }
     }
     
@@ -49,10 +54,18 @@ class CountryTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // table view setting
         tableView.register(ContentCell.self, forCellReuseIdentifier: Storyboard.CellIdentifier)
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableViewAutomaticDimension
 
+        // add refresh control
+        refreshControl = UIRefreshControl()
+        refreshControl?.attributedTitle = NSAttributedString(string: "Loosen and Fetching...")
+        refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(refresh))
+        
         refresh()
     }
 
