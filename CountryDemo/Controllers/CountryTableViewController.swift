@@ -11,13 +11,27 @@ import Mantle
 
 class CountryTableViewController: UITableViewController {
     
+    // MARK: - Models
+    var country: MTLCountry? {
+        didSet {
+            navigationItem.title = country?.title
+        }
+    }
+    var countryContents = [MTLCountryContent]()
+    
     // MARK: - refresh data
     
     let urlString = "https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json"
 
     @objc private func refresh() {
         NetworkManager.connectionRequest(with: .GET, urlString: urlString, parameters: nil, success: { (anyJsonDict) in
-            print(anyJsonDict.debugDescription)
+            if let jsonDict = anyJsonDict as? [AnyHashable: Any],
+                let country = try? MTLJSONAdapter.model(of: MTLCountry.self, fromJSONDictionary: jsonDict) as? MTLCountry {
+                self.country = country
+                self.countryContents = (country?.contents as! [MTLCountryContent]).filter() {
+                    $0.title != nil && $0.descr != nil && $0.imageHref != nil
+                }
+            }
         }) { (error) in
             print(error.debugDescription)
         }

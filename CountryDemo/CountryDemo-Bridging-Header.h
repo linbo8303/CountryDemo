@@ -4,3 +4,7 @@
 
 // Managers
 #import "NetworkManager.h"
+
+// Models
+#import "MTLCountry.h"
+#import "MTLCountryContent.h"
