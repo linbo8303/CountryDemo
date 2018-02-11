@@ -24,8 +24,8 @@ class ContentCell: UITableViewCell {
         return label
     }()
     
-    let contentImageView: UIImageView = {
-        let imageView = UIImageView()
+    let contentImageView: CachedImagedView = {
+        let imageView = CachedImagedView()
         imageView.contentMode = .scaleAspectFill
         imageView.layer.masksToBounds = true
         imageView.backgroundColor = #colorLiteral(red: 0.9803921569, green: 0.9803921569, blue: 0.9803921569, alpha: 0.8953339041)
@@ -68,6 +68,9 @@ class ContentCell: UITableViewCell {
             contentNameLabel.text = content.title
             contentDescrLabel.text = content.descr
             // TODO: load image async
+            if let imageURLString = content.imageHref {
+                contentImageView.loadImage(urlString: imageURLString)
+            }
         }
     }
 
