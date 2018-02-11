@@ -10,10 +10,14 @@ import UIKit
 
 class CachedImagedView: UIImageView {
 
+    // imageCache to save the image
     static let imageCache = NSCache<NSString, AnyObject>()
     
     private var urlStringForChecking: String?
     
+    // Easily load an image from a URL string and cache it to reduce network overhead later.
+    // - parameter urlString: The url location of your image, usually on a remote server somewhere.
+    // - parameter completion: Optionally execute some task after the image download completes
     func loadImage(urlString: String, completion: (() -> ())? = nil) {
         image = nil
         
@@ -30,8 +34,9 @@ class CachedImagedView: UIImageView {
         // download image
         if let url = URL(string: urlString) {
             DispatchQueue.global(qos: .userInitiated).async { [weak self] in
-                let urlContents = try? Data(contentsOf: url)
-                if let imageData = urlContents, let image = UIImage(data: imageData) {
+                let request = URLRequest(url: url)
+                if let imageData = try? NSURLConnection.sendSynchronousRequest(request, returning: nil),
+                    let image = UIImage(data: imageData) {
                     let urlString = "\(url)"
                     // save image to imageCache
                     CachedImagedView.imageCache.setObject(image, forKey: urlString as NSString)

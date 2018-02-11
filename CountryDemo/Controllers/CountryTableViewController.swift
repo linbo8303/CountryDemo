@@ -35,6 +35,7 @@ class CountryTableViewController: UITableViewController {
         if refreshControl != nil {
             refreshControl?.beginRefreshing()
         }
+        // load data and set value to models
         NetworkManager.connectionRequest(with: .GET, urlString: urlString, parameters: nil, success: { (anyJsonDict) in
             if let jsonDict = anyJsonDict as? [AnyHashable: Any],
                 let country = try? MTLJSONAdapter.model(of: MTLCountry.self, fromJSONDictionary: jsonDict) as? MTLCountry {

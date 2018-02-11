@@ -7,10 +7,10 @@
 //
 
 import UIKit
-import Kingfisher
 
 class ContentCell: UITableViewCell {
     
+    // MARK: - UI elements initialization
     let contentNameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.preferredFont(forTextStyle: .headline)
@@ -32,6 +32,7 @@ class ContentCell: UITableViewCell {
         return imageView
     }()
 
+    // override init method to setup UI elements
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupViews()
@@ -41,6 +42,7 @@ class ContentCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // add UI elements and set up constraints
     private func setupViews() {
         addSubview(contentImageView)
         addSubview(contentNameLabel)
@@ -67,7 +69,7 @@ class ContentCell: UITableViewCell {
         if let content = self.content {
             contentNameLabel.text = content.title
             contentDescrLabel.text = content.descr
-            // TODO: load image async
+            // load image async
             if let imageURLString = content.imageHref {
                 contentImageView.loadImage(urlString: imageURLString)
             }
@@ -77,7 +79,7 @@ class ContentCell: UITableViewCell {
 }
 
 extension UIView {
-    
+    // convenient method for adding auto layout constraints
     func addConstraintsWithFormat(format: String, views: UIView...) {
         var viewsDictionary = [String: UIView]()
         for (index, view) in views.enumerated() {

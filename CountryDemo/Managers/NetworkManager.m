@@ -29,11 +29,13 @@
         request.HTTPBody = data;
     }
 
-    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+    [NSURLConnection sendAsynchronousRequest:request
+                                       queue:[NSOperationQueue mainQueue]
+                           completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         if ((data != nil) && (connectionError == nil)) {
             NSDictionary *jsonDict;
             if (![NSJSONSerialization isValidJSONObject:data]) {
-                NSString *jsonString = [[NSString alloc] initWithData:data encoding:NSISO2022JPStringEncoding];
+                NSString *jsonString = [[NSString alloc] initWithData:data encoding:NSISOLatin1StringEncoding];
                 NSData *jsonData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
                 jsonDict = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:nil];
             } else {
