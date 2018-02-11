@@ -17,7 +17,15 @@ class CountryTableViewController: UITableViewController {
             navigationItem.title = country?.title
         }
     }
-    var countryContents = [MTLCountryContent]()
+    var countryContents = [MTLCountryContent]() {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    
+    private struct Storyboard {
+        static let CellIdentifier = "ContentCell"
+    }
     
     // MARK: - refresh data
     
@@ -41,25 +49,28 @@ class CountryTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: Storyboard.CellIdentifier)
+        
         refresh()
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return countryContents.count
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Storyboard.CellIdentifier, for: indexPath)
 
         // Configure the cell...
+        let content = countryContents[indexPath.row]
+        cell.textLabel?.text = content.title
+        
         return cell
     }
-    */
 }

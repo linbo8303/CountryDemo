@@ -13,6 +13,7 @@
 		38D0BBFC203005E500CC893F /* NetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 38D0BBFB203005E500CC893F /* NetworkManager.m */; };
 		38D0BC02203007E800CC893F /* MTLCountry.m in Sources */ = {isa = PBXBuildFile; fileRef = 38D0BBFE203007E700CC893F /* MTLCountry.m */; };
 		38D0BC03203007E800CC893F /* MTLCountryContent.m in Sources */ = {isa = PBXBuildFile; fileRef = 38D0BBFF203007E700CC893F /* MTLCountryContent.m */; };
+		38D0BC06203008AE00CC893F /* ContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D0BC05203008AE00CC893F /* ContentCell.swift */; };
 		CBF830DB4C5D5BC21A7B86D1 /* Pods_CountryDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E26D6AF770F133C0FD8EE39 /* Pods_CountryDemo.framework */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +30,7 @@
 		38D0BBFF203007E700CC893F /* MTLCountryContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTLCountryContent.m; sourceTree = "<group>"; };
 		38D0BC00203007E800CC893F /* MTLCountryContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTLCountryContent.h; sourceTree = "<group>"; };
 		38D0BC01203007E800CC893F /* MTLCountry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTLCountry.h; sourceTree = "<group>"; };
+		38D0BC05203008AE00CC893F /* ContentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentCell.swift; sourceTree = "<group>"; };
 		49F1F9AD73FDD9E8F4072376 /* Pods-CountryDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CountryDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-CountryDemo/Pods-CountryDemo.release.xcconfig"; sourceTree = "<group>"; };
 		6E26D6AF770F133C0FD8EE39 /* Pods_CountryDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CountryDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CC3B40D83D0E36ECC9730B7 /* Pods-CountryDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CountryDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CountryDemo/Pods-CountryDemo.debug.xcconfig"; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 		38D0BBE2203001A800CC893F /* CountryDemo */ = {
 			isa = PBXGroup;
 			children = (
+				38D0BC07203008B200CC893F /* Views */,
 				38D0BC04203007EC00CC893F /* Models */,
 				38D0BBFD203005EA00CC893F /* Managers */,
 				38D0BBF82030051B00CC893F /* Controllers */,
@@ -121,6 +124,14 @@
 				38D0BBFF203007E700CC893F /* MTLCountryContent.m */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		38D0BC07203008B200CC893F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				38D0BC05203008AE00CC893F /* ContentCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		7D9054717769229083D7047A /* Frameworks */ = {
@@ -266,6 +277,7 @@
 				38D0BC02203007E800CC893F /* MTLCountry.m in Sources */,
 				38D0BBF72030051600CC893F /* CountryTableViewController.swift in Sources */,
 				38D0BBFC203005E500CC893F /* NetworkManager.m in Sources */,
+				38D0BC06203008AE00CC893F /* ContentCell.swift in Sources */,
 				38D0BC03203007E800CC893F /* MTLCountryContent.m in Sources */,
 				38D0BBE4203001A800CC893F /* AppDelegate.swift in Sources */,
 			);
