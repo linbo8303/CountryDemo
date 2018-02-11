@@ -37,7 +37,7 @@ class CountryTableViewController: UITableViewController {
                 let country = try? MTLJSONAdapter.model(of: MTLCountry.self, fromJSONDictionary: jsonDict) as? MTLCountry {
                 self.country = country
                 self.countryContents = (country?.contents as! [MTLCountryContent]).filter() {
-                    $0.title != nil && $0.descr != nil && $0.imageHref != nil
+                    $0.title != nil || $0.descr != nil || $0.imageHref != nil
                 }
             }
         }) { (error) in
@@ -49,8 +49,10 @@ class CountryTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: Storyboard.CellIdentifier)
-        
+        tableView.register(ContentCell.self, forCellReuseIdentifier: Storyboard.CellIdentifier)
+        tableView.estimatedRowHeight = tableView.rowHeight
+        tableView.rowHeight = UITableViewAutomaticDimension
+
         refresh()
     }
 
@@ -69,7 +71,9 @@ class CountryTableViewController: UITableViewController {
 
         // Configure the cell...
         let content = countryContents[indexPath.row]
-        cell.textLabel?.text = content.title
+        if let contentCell = cell as? ContentCell {
+            contentCell.content = content
+        }
         
         return cell
     }
