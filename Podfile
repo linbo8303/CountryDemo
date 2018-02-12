@@ -9,6 +9,11 @@ target 'CountryDemo' do
   pod 'Mantle'
   pod 'Kingfisher'
   pod 'SnapKit'
+  pod 'SVProgressHUD'
+  
+  target 'CountryDemoTests' do
+      pod 'Mantle'
+  end
   
 end
 

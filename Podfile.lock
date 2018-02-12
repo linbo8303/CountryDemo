@@ -4,17 +4,20 @@ PODS:
     - Mantle/extobjc (= 2.1.0)
   - Mantle/extobjc (2.1.0)
   - SnapKit (4.0.0)
+  - SVProgressHUD (2.2.3)
 
 DEPENDENCIES:
   - Kingfisher
   - Mantle
   - SnapKit
+  - SVProgressHUD
 
 SPEC CHECKSUMS:
   Kingfisher: 1f9157d9c02b380cbd0b7cc890161195164eb634
   Mantle: 2fa750afa478cd625a94230fbf1c13462f29395b
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
+  SVProgressHUD: a5eaeff664a82dda89809c409ace40183ce91523
 
-PODFILE CHECKSUM: f1f45c209a5489a38ca404e1379b32a800891b3c
+PODFILE CHECKSUM: 4b9aa8b86a80a61f139d800b826b1e20d5ba95b9
 
 COCOAPODS: 1.3.1
