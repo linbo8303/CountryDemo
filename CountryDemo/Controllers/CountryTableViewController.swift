@@ -14,7 +14,7 @@ class CountryTableViewController: UITableViewController {
     // MARK: - Models
     var country: MTLCountry? {
         didSet {
-            navigationItem.title = country?.title
+            self.title = country?.title
         }
     }
     var countryContents = [MTLCountryContent]() {

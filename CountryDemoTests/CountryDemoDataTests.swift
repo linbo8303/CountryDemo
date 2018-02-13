@@ -12,7 +12,7 @@ import Mantle
 
 class CountryDemoDataTests: XCTestCase {
     
-    var country: MTLCountry?
+    var country: MTLCountry!
     
     override func setUp() {
         super.setUp()
