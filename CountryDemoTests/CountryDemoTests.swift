@@ -52,4 +52,12 @@ class CountryDemoTests: XCTestCase {
         XCTAssertEqual(countryTVC.tableView.numberOfRows(inSection: 0), countryConntents.count)
     }
     
+    func testTableViewRowContent() {
+        if let cell = countryTVC.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? ContentCell {
+            XCTAssertEqual(cell.content, countryConntents[0])
+            XCTAssertEqual(cell.contentNameLabel.text, countryConntents[0].title)
+            XCTAssertEqual(cell.contentDescrLabel.text, countryConntents[0].descr)
+        }
+    }
+    
 }
